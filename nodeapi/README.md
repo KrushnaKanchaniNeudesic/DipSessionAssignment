@@ -1,0 +1,1 @@
+# inventory_customer_node_assignment
