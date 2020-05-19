@@ -1,0 +1,41 @@
+<h3>Text Analytics</h3>
+<hr />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <textarea placeholder="Enter text to translate" class="form-control translation-box" rows="5"
+                [(ngModel)]="inputText"></textarea>
+            </div>
+    </div>
+    <div class="text-center">
+        <button [disabled]="loading" class="btn btn-primary btn-lg" (click)="GetTranslation()">
+            <span *ngIf="loading" class="spinner-border spinner-border-md mr-1"></span>Analyze</button>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h6>Language : {{actualTextAnalyticsResult.detectedlanguge.documents[0].detectedLanguages[0].name}}</h6>
+            <textarea disabled class="form-control translation-box"
+            rows="5">{{ textAnalyticsResponse.detectedlanguge}}</textarea>
+        </div>
+        <div class="col-md-6">
+            <h6>Sentiment :  {{actualTextAnalyticsResult.sentiments.documents[0].sentiment}}</h6>
+            <textarea disabled class="form-control translation-box"
+            rows="5">{{textAnalyticsResponse.sentiments}}</textarea>
+        </div>
+       
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h6>Entities</h6>
+            <textarea disabled class="form-control translation-box"
+            rows="5">{{textAnalyticsResponse.entities}}</textarea>
+        </div>
+        <div class="col-md-6">
+            <h6>Key Phrases</h6>
+            <textarea disabled class="form-control translation-box"
+            rows="5">{{textAnalyticsResponse.keyparse}}</textarea>
+        </div>
+    </div>
+</div>

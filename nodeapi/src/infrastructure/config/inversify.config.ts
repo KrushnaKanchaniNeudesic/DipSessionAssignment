@@ -1,6 +1,7 @@
+import { AxiosApi } from './../external-api/axios-api';
 import { ProductApi } from '../external-api/product-api';
-import { CustomerService } from '../service/CustomerService';
-import { ICustomerService } from '../../interfaces_adapters/services/ICustomerService';
+import { AzureCogService } from '../service/AzureCogService';
+import { IAzureCogService } from '../../interfaces_adapters/services/IAzureCogService';
 import { Customer } from '../../domain/entities/customer';
 import { AsyncContainerModule } from "inversify";
 
@@ -36,7 +37,8 @@ export const bindings = new AsyncContainerModule(async (bind) => {
     }).inRequestScope();
 
 
-    bind<ICustomerService>(TYPES.CustomerService).to(CustomerService).inTransientScope();
+    bind<IAzureCogService>(TYPES.AzureCogService).to(AzureCogService).inTransientScope();
     bind<ProductApi>(TYPES.ProductApi).to(ProductApi).inTransientScope();
+    bind<AxiosApi>(TYPES.AxisApi).to(AxiosApi).inTransientScope();
 
 });

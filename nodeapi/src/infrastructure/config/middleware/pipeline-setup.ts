@@ -1,10 +1,13 @@
 import * as bodyParser from 'body-parser';
+import * as cors from 'cors';
+
 
 export class PipeLineSetUp {
 
 
 
     public static configFn(theApp) {
+        theApp.use(cors());
         theApp.use(bodyParser.urlencoded({
             extended: true
         }));

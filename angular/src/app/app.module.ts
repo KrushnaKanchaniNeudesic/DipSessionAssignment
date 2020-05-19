@@ -1,30 +1,34 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TextanalyticsComponent } from './textanalytics/textanalytics.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-
-import { AppRoutingModule } from './app.routing';
-import { ComponentsModule } from './components/components.module';
-
 import { AppComponent } from './app.component';
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { HomeComponent } from './home/home.component';
+import { TextTranslatorComponent } from './text-translator/text-translator.component';
 
 @NgModule({
-  imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
-  ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent,
+    NavMenuComponent,
+    HomeComponent,
+    TextTranslatorComponent,
+    TextanalyticsComponent
+  ],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot([
+      { path: '', component: TextTranslatorComponent, pathMatch: 'full' },
+      { path: 'text-translator', component: TextTranslatorComponent },
+      { path: 'text-analytics', component: TextanalyticsComponent },
 
+      
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
