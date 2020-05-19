@@ -1,7 +1,7 @@
 import { AddProductToCartRequest } from './../../domain/product-api-models/AddProductToCartRequest';
 import { IAzureCogService } from '../services/IAzureCogService';
 import * as express from "express";
-import { controller, httpGet, response, BaseHttpController, requestParam, requestBody, httpPost } from 'inversify-express-utils';
+import { controller, response, BaseHttpController, requestParam, requestBody, httpPost } from 'inversify-express-utils';
 import { inject } from 'inversify';
 import TYPES from '../../domain/constant/types';
 
@@ -36,10 +36,11 @@ export class CustomerController extends BaseHttpController {
     return this._AzureCogService.Textanlytics(reqbody.text);
   }
 
-  @httpGet('/get/productsdetailsbyid/:id')
+  @httpPost('/ocr/text')
   public async GetProductDetailsById(
-    @requestParam("id") id: number,
+    @requestBody() reqbody: {url: string},
   ) {
+    return this._AzureCogService.ReadOcrImage(reqbody.url);
   }
 
   @httpPost('/product/addtocart')

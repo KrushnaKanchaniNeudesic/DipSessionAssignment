@@ -46,8 +46,8 @@ export class AzureCogService implements IAzureCogService {
       entities: undefined,
       keyparse: undefined
     };
-    
-    let  res  = await Promise.all(
+
+    let res = await Promise.all(
       [this.CallTranslateTextApi(text, 'languages'),
       this.CallTranslateTextApi(text, 'sentiment'),
       this.CallTranslateTextApi(text, 'entities/recognition/general'),
@@ -56,7 +56,22 @@ export class AzureCogService implements IAzureCogService {
     response.sentiments = res[1];
     response.entities = res[2];
     response.keyparse = res[3];
-     return response;
+    return response;
+  }
+
+  async ReadOcrImage(imagurl) {
+
+    let data = JSON.stringify({ url: imagurl });
+    return this._axiosApi.post(`https://eastus.api.cognitive.microsoft.com/vision/v2.0/ocr?language=unk&detectOrientation=true`, data, {
+      headers: {
+        "Ocp-Apim-Subscription-Key": "d8173c9f636141ef96169511244c79bd",
+        "Content-Type": "application/json"
+      }
+    }).then(res => {
+      return res.data;
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   private async  CallTranslateTextApi(text: string, type: string) {

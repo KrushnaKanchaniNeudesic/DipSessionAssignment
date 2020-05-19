@@ -29,4 +29,8 @@ export class TranslatorService {
         return response;
       });
   }
+
+  OcrImageUpload(url){
+    return this.http.post(`${this.baseURL}ocr/text`,{url:url})
+  }
 }

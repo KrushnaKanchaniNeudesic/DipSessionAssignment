@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label for="file">Image URL</label>
+    <input type="text" [(ngModel)]="fileurl">
+</div>
+
+<div class="text-center">
+    <button [disabled]="loading" class="btn btn-primary btn-lg" (click)="uploadFileToActivity()">
+        <span *ngIf="loading" class="spinner-border spinner-border-md mr-1"></span>Translate</button>
+</div>
+
+<div class="row">
+    <p [innerHTML]="convertedText"></p>
+</div>

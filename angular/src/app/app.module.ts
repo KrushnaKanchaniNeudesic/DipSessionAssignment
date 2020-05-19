@@ -1,3 +1,4 @@
+import { OcrTotextComponent } from './ocr-totext/ocr-totext.component';
 import { TextanalyticsComponent } from './textanalytics/textanalytics.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { TextTranslatorComponent } from './text-translator/text-translator.compo
     NavMenuComponent,
     HomeComponent,
     TextTranslatorComponent,
-    TextanalyticsComponent
+    TextanalyticsComponent,
+    OcrTotextComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { TextTranslatorComponent } from './text-translator/text-translator.compo
       { path: '', component: TextTranslatorComponent, pathMatch: 'full' },
       { path: 'text-translator', component: TextTranslatorComponent },
       { path: 'text-analytics', component: TextanalyticsComponent },
+      { path: 'ocr-text', component: OcrTotextComponent },
 
       
     ])

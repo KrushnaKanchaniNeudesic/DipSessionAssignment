@@ -32,6 +32,7 @@
     "inversify-express-utils": "^6.3.2",
     "morgan": "^1.10.0",
     "mssql": "^6.2.0",
+    "multer": "^1.4.2",
     "pg": "^8.0.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.24"
