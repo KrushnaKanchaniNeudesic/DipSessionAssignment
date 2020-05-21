@@ -1,0 +1,35 @@
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="file">Image URL</label>
+            <input type="text" [(ngModel)]="fileurl">
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button [disabled]="loadingAnlyzeFrom" class="btn btn-primary btn-lg" (click)="AnalyzeForm()">
+            <span *ngIf="loadingAnlyzeFrom" class="spinner-border spinner-border-md mr-1"></span>Analyze Form</button>
+    <p class="p3"></p>
+        <button [disabled]="loadingGetResult" class="btn btn-primary btn-lg" *ngIf="locatedUrl"
+            (click)="GetFormAnlyzeText()">
+            <span *ngIf="loadingGetResult" class="spinner-border spinner-border-md mr-1"></span>Get Form Anlyze
+            Text</button>
+    
+    </div>
+
+    <div class="col-md-4" *ngIf="faceApiResultText && faceApiResultText !== ''">
+        <textarea disabled class="form-control translation-box" rows="5">{{faceApiResultText}}</textarea>
+    </div>
+</div>
+<div class="row pt-5">
+    <div class="col-md-6">
+        <h6>Sample Invoice</h6>
+        <pdf-viewer  src="https://electricitybill.blob.core.windows.net/testbillspdf/105-TestTo6Companya.pdf" [render-text]="true" style="display: block;"></pdf-viewer>
+    </div>
+
+    <div class="col-md-6">
+        <pdf-viewer *ngIf="fileurl && fileurl !== ''" [src]="fileurl" [render-text]="true" style="display: block;"></pdf-viewer>
+    </div>
+</div>
+

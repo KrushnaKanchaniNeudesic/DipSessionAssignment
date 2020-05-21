@@ -1,0 +1,84 @@
+<ngb-tabset [destroyOnHide]="false">
+
+    <ngb-tab>
+        <ng-template ngbTabTitle>Person Group - Person</ng-template>
+        <ng-template ngbTabContent>
+            <div style="padding: 20px;">
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="file">Perosn GroupId: </label>
+                        <input type="text" [(ngModel)]="peronGroupId">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="file">Perosn Name: </label>
+                        <input type="text" [(ngModel)]="personName">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="file">Image URL: </label>
+                        <input type="text" [(ngModel)]="personUrl">
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+                        <img style="max-width: 300px; max-height: 300px;" src="{{personUrl}}"
+                            *ngIf="personUrl && personUrl !== ''" alt="image" />
+                    </div>
+                </div>
+                <div class="row" style="padding: 10px;">
+                    <h6>{{personGroupIdResultText}}</h6>
+                </div>
+                <div class="row">
+
+                    <div class="text-center">
+                        <button [disabled]="loading" class="btn btn-primary btn-lg" (click)="AddPerosn()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-md mr-1"></span>Add
+                            Person</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-tab>
+
+    <ngb-tab>
+        <ng-template ngbTabTitle>Idetentify Face</ng-template>
+        <ng-template ngbTabContent>
+            <div style="padding: 20px;">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="file">Person Group Id</label>
+                        <input type="text" [(ngModel)]="matchPeronGroupId">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="file">Image URL</label>
+                        <input type="text" [(ngModel)]="fileurl">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img style="max-width: 300px; max-height: 300px;" src="{{fileurl}}"
+                            *ngIf="fileurl && fileurl !== ''" alt="image" />
+                    </div>
+                    <div class="col-md-4" *ngIf="faceApiResultText && faceApiResultText !== ''">
+                        <textarea disabled class="form-control translation-box"
+                            rows="5">{{faceApiResultText}}</textarea>
+                    </div>
+                </div>
+
+                <div class="row" style="padding: 10px;">
+                    <h6 *ngIf="faceMatched">{{resultText}}</h6>
+                </div>
+
+                <div class="row">
+                    <div class="text-center">
+                        <button [disabled]="loading && (!fileurl && fileurl === '')" class="btn btn-primary btn-lg"
+                            (click)="MatchFaceClick()">
+                            <span *ngIf="loading" class="spinner-border spinner-border-md mr-1"></span>Match
+                            Face</button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>

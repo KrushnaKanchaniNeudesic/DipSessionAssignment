@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import { InversifyExpressServer } from 'inversify-express-utils';
 import { Container } from 'inversify';
 import { bindings } from './infrastructure/config/inversify.config';
-import './interfaces_adapters/controller/customer.controller'
+import './interfaces_adapters/controller/CongService.controller'
 import { PipeLineSetUp } from './infrastructure/config/middleware/pipeline-setup';
 
 (async () => {

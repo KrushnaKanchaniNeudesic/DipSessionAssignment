@@ -17,20 +17,39 @@ export class TranslatorService {
   }
 
   getTransaltedText(textToTranslate: string, targetLanguage: string) {
-    return this.http.post(`${this.baseURL}translatetext/${targetLanguage}`, {text: textToTranslate})
+    return this.http.post(`${this.baseURL}translatetext/${targetLanguage}`, { text: textToTranslate })
       .pipe(response => {
         return response;
       });
   }
 
   TextAnalyticsTransform(textToTranslate: string) {
-    return this.http.post(`${this.baseURL}textanlytics`, {text: textToTranslate})
+    return this.http.post(`${this.baseURL}textanlytics`, { text: textToTranslate })
       .pipe(response => {
         return response;
       });
   }
 
-  OcrImageUpload(url){
-    return this.http.post(`${this.baseURL}ocr/text`,{url:url})
+  OcrImageUpload(url) {
+    return this.http.post(`${this.baseURL}ocr/text`, { url: url })
+  }
+
+  MatchFaceApi(personGroupId: string, url: string) {
+    return this.http.post(`${this.baseURL}matchface`, {personGroupId: personGroupId, url: url })
+  }
+  CreatePersonGroup(personGroupId: string) {
+    return this.http.post(`${this.baseURL}create/persongroup/${personGroupId}`, {})
+  }
+
+  AddPerosnIntoPersonGroup(personGroupId: string, perosnName: string, url: string) {
+    return this.http.post(`${this.baseURL}add/persongroup/person`, { personGroupId, perosnName, url })
+  }
+
+  AnalyzeFrom(url: string) {
+    return this.http.post(`${this.baseURL}analyzefrom`, { url})
+  }
+
+  AnalyzeFromGetresult(url: string) {
+    return this.http.post(`${this.baseURL}analyzefrom/getresult`, { url})
   }
 }

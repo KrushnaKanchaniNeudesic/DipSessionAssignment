@@ -8,8 +8,20 @@
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
+         
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" routerLink='/ocr-text'>ocr-text</a>
+            <a class="nav-link text-dark" routerLink='/form-recognizer'>Form recognizer</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" routerLink='/face-api'>FaceApi</a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" routerLink='/luis-qna-webchat'>Luis Qna Webchat</a>
+          </li>
+         
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" routerLink='/ocr-text'>ocr to text</a>
           </li>
          
           <li class="nav-item" [routerLinkActive]="['link-active']">

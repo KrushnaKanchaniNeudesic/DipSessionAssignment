@@ -10,6 +10,7 @@ export class OcrTotextComponent implements OnInit {
   loading = false;
   fileurl: string = null;
   convertedText = '';
+  faceApiResultText;
   constructor(private translatorService: TranslatorService) { }
 
   ngOnInit() {
@@ -19,6 +20,8 @@ export class OcrTotextComponent implements OnInit {
     this.loading = true;
     this.translatorService.OcrImageUpload(this.fileurl).subscribe(
       (data: { regions: [{ lines: [{ words: [{ text: string }] }] }] }) => {
+      this.faceApiResultText = JSON.stringify(data, null, 2);
+
         this.loading = false;
         this.convertedText = '';
         if (data.regions) {
@@ -27,9 +30,10 @@ export class OcrTotextComponent implements OnInit {
               lin.words.forEach(wrd => {
                 this.convertedText = this.convertedText + ' ' + wrd.text;
               });
+            this.convertedText =  this.convertedText + '<br>';
+
 
             });
-            this.convertedText =  this.convertedText + '<br>';
           });
         }
 

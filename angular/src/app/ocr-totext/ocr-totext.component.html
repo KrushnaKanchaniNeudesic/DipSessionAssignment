@@ -1,11 +1,26 @@
-<div class="form-group">
-    <label for="file">Image URL</label>
-    <input type="text" [(ngModel)]="fileurl">
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="file">Image URL</label>
+            <input type="text" [(ngModel)]="fileurl">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <img style="max-width: 300px; max-height: 300px;" src="{{fileurl}}" *ngIf="fileurl && fileurl !== ''"
+            alt="image" />
+    </div>
+
+    <div class="col-md-4" *ngIf="faceApiResultText && faceApiResultText !== ''">
+        <textarea disabled class="form-control translation-box"
+        rows="5">{{faceApiResultText}}</textarea>
+    </div>
 </div>
 
 <div class="text-center">
     <button [disabled]="loading" class="btn btn-primary btn-lg" (click)="uploadFileToActivity()">
-        <span *ngIf="loading" class="spinner-border spinner-border-md mr-1"></span>Translate</button>
+        <span *ngIf="loading" class="spinner-border spinner-border-md mr-1"></span>Read Text</button>
 </div>
 
 <div class="row">
